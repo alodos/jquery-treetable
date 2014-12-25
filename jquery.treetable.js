@@ -325,21 +325,24 @@
       var nodeParent = node.parentNode(), rootid;
 
       if (destination === null) {
-        // Move to roots
-        node.setParent(destination);
-        this._moveRows(node, destination);
+        // Skip if node destination already is root
+        if (nodeParent) {
+          // Move to roots
+          node.setParent(destination);
+          this._moveRows(node, destination);
 
-        // Update roots
-        // Remove node from roots
-        if (!nodeParent) {
-          rootid = $.inArray(node, this.roots);
-          if (rootid > -1) {
-            this.roots[rootid] = undefined;
-            this.roots.splice(rootid,1);
+          // Update roots
+          // Remove node from roots
+          if (!nodeParent) {
+            rootid = $.inArray(node, this.roots);
+            if (rootid > -1) {
+              this.roots[rootid] = undefined;
+              this.roots.splice(rootid,1);
+            }
           }
+          // Add node to roots
+          this.roots.unshift(node);
         }
-        // Add node to roots
-        this.roots.unshift(node);
       } else if (node !== destination && destination.id !== node.parentId && $.inArray(node, destination.ancestors()) === -1) {
         node.setParent(destination);
         this._moveRows(node, destination);

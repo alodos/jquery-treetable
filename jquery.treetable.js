@@ -172,11 +172,13 @@
       if (node === null) {
         this.parentId = null;
         this.row.data(this.settings.parentIdAttr, null);
+        this.row.attr("data-" + this.settings.parentIdAttr.replace(/([A-Z])/g, "-$1" ).toLowerCase(), '');
         // Need add this to roots array after if this is not already in it
         return 0;
       } else {
         this.parentId = node.id;
         this.row.data(this.settings.parentIdAttr, node.id);
+        this.row.attr("data-" + this.settings.parentIdAttr.replace(/([A-Z])/g, "-$1" ).toLowerCase(), node.id);
         return node.addChild(this);
       }
     };

@@ -26,6 +26,10 @@
       }
 
       this.treeCell = $(this.row.children(this.settings.columnElType)[this.settings.column]);
+      if (this.settings.columnElSelector != null) {
+        this.treeCell = this.treeCell.find(this.settings.columnElSelector);
+      }
+
       this.expander = $(this.settings.expanderTemplate);
       this.indenter = $(this.settings.indenterTemplate);
       this.children = [];
@@ -463,6 +467,7 @@
         clickableNodeNames: false,
         column: 0,
         columnElType: "td", // i.e. 'td', 'th' or 'td,th'
+        columnElSelector: null, // i.e. 'div', 'div .container' or other selector for element inside column cell
         expandable: false,
         expanderTemplate: "<a href='#'>&nbsp;</a>",
         indent: 19,

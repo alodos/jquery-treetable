@@ -21,3 +21,7 @@ http://ludo.cubicphuse.nl/jquery-treetable.
 
 * JSFiddle with AJAX example: http://jsfiddle.net/djlerman/bbj8k9pe/ [@djlerman]
 * Example Ruby on Rails project with AJAX treetable: https://github.com/ludo/jquery-treetable-ajax-example
+
+## Minimize
+Minimize jQuery treetable javascript with Grunt and plugin grunt-contrib-uglify:
+    $ grunt uglify
